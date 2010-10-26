@@ -1,3 +1,5 @@
+require 'json'
+
 module Tinder
   # A campfire room
   class Room
@@ -131,7 +133,7 @@ module Tinder
       options = {
         :host => "streaming.#{Connection::HOST}",
         :path => room_url_for(:live),
-        :auth => "#{auth[:username]}:#{auth[:password]}",
+        :auth => "#{connection.options[:token]}:X",
         :timeout => 2
       }
 
