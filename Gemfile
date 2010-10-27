@@ -1,0 +1,11 @@
+gem "json"
+gem "dm-core"
+gem "dm-migrations"
+gem "do_sqlite3"
+gem "activesupport"
+gem "httparty"
+gem "mime-types"
+gem "chronic"
+gem "dm-sqlite-adapter"
+gem "twitter-stream"
+

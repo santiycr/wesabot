@@ -1,4 +1,7 @@
 #!/usr/bin/env ruby
+require 'rubygems'
+require 'bundler/setup'
+
 require 'campfire/polling_bot'
 OpenSSL::debug = true
 
