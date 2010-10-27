@@ -23,6 +23,11 @@ class KibitzPlugin < Campfire::PollingBot::Plugin
       bot.say_random(%w{Yup y})
     when /(wake up|you awake)/i
       bot.say("Yo.")
+    when /hate couchdb/i
+      sayings = ["But #{person}, CouchDB is web scale.",
+                 "#{person}, clearly you're doing it wrong. CouchDB doesn't do that",
+                 "#{person}, have you considered using /dev/null?"]
+      bot.say_random(sayings)
     when /zod/i
       sayings = ["Zod's a wanker.",
                  "I'd tell you about Zod, but you wouldn't listen. No one ever does.",
