@@ -11,8 +11,8 @@ class SnipePlugin < Campfire::PollingBot::Plugin
                  "#{person}, clearly you're doing it wrong. CouchDB doesn't do that",
                  "#{person}, have you considered using /dev/null?"]
       bot.say_random(sayings)
+    when /(.*) makes me sad/
+      bot.say("#{$1} makes me sad, too")
     end
-  when /(.*) makes me sad/
-    bot.say("#{$1} makes me sad, too")
-  end
+    end
 end
