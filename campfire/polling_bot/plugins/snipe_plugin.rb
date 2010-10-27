@@ -18,5 +18,10 @@ class SnipePlugin < Campfire::PollingBot::Plugin
         bot.say("#{$1}, too")
       end
     end
+
+    if person == "buildbot" && message.body =~ /FIXED/
+      sayings = ["Whoopie!", "Booyah!", "Yay!", "Rad."]
+      bot.say_random(sayings)
+    end
   end
 end

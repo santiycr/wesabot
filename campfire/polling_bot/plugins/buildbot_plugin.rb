@@ -14,7 +14,7 @@ class BuildbotPlugin < Campfire::PollingBot::Plugin
       failure = builds.count {|b| b == "failure"}
       bot.say("#{failure} of the last 10 builds failed")
       if failure > success
-        bot.say("You guys suck at keeping the build green")
+        bot.say("Somebody should probably, y'know, fix that")
       end
       return HALT
     end
