@@ -6,7 +6,6 @@ class SnipePlugin < Campfire::PollingBot::Plugin
   def process(message)
     person = message.person
     unless person == bot.name
-      p message.body
       case message.body
       when /hate couchdb/i
         sayings = ["But #{person}, CouchDB is web scale.",
