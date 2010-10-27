@@ -7,7 +7,7 @@ OpenSSL::debug = true
 
 wes = Campfire::PollingBot.new(
   :username => 'campfire_username@example.com',
-  :password => 'sekret',
+  :token => 'sekret',
   :name => 'Wes', # the name of your bot
   :domain => 'campfire_domain', # <domain>.campfirenow.com
   :ssl => true, # or not, if you like to live dangerously

@@ -1,4 +1,3 @@
-$:.unshift "#{File.dirname(__FILE__)}/../vendor/tinder/lib"
 require "rubygems"
 require "tinder"
 
@@ -11,8 +10,7 @@ class Campfire
       self.ssl = params[:ssl]
       self.domain = params[:domain]
       self.token = params[:token]
-      self.campfire = Tinder::Campfire.new(domain, :ssl => ssl, :token => token,
-                                           :username => params[:username], :password => params[:password])
+      self.campfire = Tinder::Campfire.new(domain, :ssl => ssl, :username => params[:username], :token => token)
       self.name = campfire.me["name"]
       begin
         self.room = campfire.find_room_by_name(params[:room]) or raise "Could not find a room named '#{params[:room]}'"
