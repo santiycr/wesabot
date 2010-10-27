@@ -1,4 +1,5 @@
 GEM
+  remote: http://rubygems.org/
   specs:
     activesupport (3.0.1)
     addressable (2.2.2)
@@ -26,6 +27,12 @@ GEM
     json (1.4.6)
     mime-types (1.16)
     roauth (0.0.3)
+    tinder (1.4.1)
+      activesupport
+      eventmachine
+      httparty
+      mime-types
+      twitter-stream
     twitter-stream (0.1.10)
       eventmachine (>= 0.12.8)
       roauth (>= 0.0.2)
@@ -34,13 +41,10 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  activesupport
   chronic
   dm-core
   dm-migrations
   dm-sqlite-adapter
   do_sqlite3
-  httparty
   json
-  mime-types
-  twitter-stream
+  tinder (>= 1.4.1)
