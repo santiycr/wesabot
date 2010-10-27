@@ -14,7 +14,7 @@ class DeployPlugin < Campfire::PollingBot::Plugin
     end
     case message.command
     when /deploy/
-      deploy = Deploy.last(:order => [:timestamp.desc])
+      deploy = Deploy.last(:order => [:timestamp.asc])
       if deploy
         bot.say("#{deploy.who} deployed at #{deploy.timestamp}")
       else

@@ -44,7 +44,6 @@ class KibitzPlugin < Campfire::PollingBot::Plugin
                  "say more, #{person}",
                  "#{person}, you do realize that you're talking to a bot with a very limited vocabulary, don't you?",
                  "Whatever, #{person}.",
-                 "Marc, tell #{person} to leave me alone.",
                  "Not now, #{person}.",
                  "brb crying",
                  "How do you feel when someone says '#{message.command}' to you, #{person}?"]
