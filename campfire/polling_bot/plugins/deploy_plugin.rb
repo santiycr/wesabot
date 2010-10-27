@@ -1,6 +1,6 @@
 # Plugin to keep track of when deploys happened
 class DeployPlugin < Campfire::PollingBot::Plugin
-  accepts :text_message, :addressed_to_me => true
+  accepts :text_message
 
   def process(message)
     if message.person == "Deploy"
