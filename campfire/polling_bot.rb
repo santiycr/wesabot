@@ -28,9 +28,13 @@ class Campfire
       end
       
       room.listen do |message|
-        klass = Campfire.const_get(message[:type])
-        message = klass.new(message)
-        process(message)
+        begin
+          klass = Campfire.const_get(message[:type])
+          message = klass.new(message)
+          process(message)
+        rescue Exception => e
+          puts "Error in #{klass}: #{e.class}: #{e.message}\n\t#{e.backtrace.join("\n\t")}"
+        end
       end
       
     rescue Exception => e # leave the room if we crash
