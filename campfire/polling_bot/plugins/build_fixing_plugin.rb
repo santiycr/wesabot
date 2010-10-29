@@ -29,7 +29,7 @@ class BuildFixingPlugin < Campfire::PollingBot::Plugin
         end
       end
     end
-    if person == "buildbot" && message.body =~ /FIXED/
+    if message.person == "buildbot" && message.body =~ /FIXED/
       @fixers.clear
     end
   end
