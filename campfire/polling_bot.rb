@@ -48,6 +48,10 @@ class Campfire
 
     def process(message)
       puts "processing #{message} (#{message.person} - #{message.body})" if debug
+      if message.person == self.name
+        puts "Skipping message from self"
+        return
+      end
       plugins.each do |plugin|
         if plugin.accepts?(message)
           puts "sending to plugin #{plugin} (priority #{plugin.priority})" if debug
