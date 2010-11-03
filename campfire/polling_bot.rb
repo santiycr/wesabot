@@ -31,7 +31,7 @@ class Campfire
       have_timer = false
       room.listen do |message|
         unless have_timer
-          EventMachine::add_periodic_timer(10) do
+          EventMachine::add_periodic_timer(60) do
             puts "[#{Time.now}] HEARTBEAT: Event loop"
           end
           have_timer = true
@@ -44,6 +44,7 @@ class Campfire
           puts "Error in #{klass}: #{e.class}: #{e.message}\n\t#{e.backtrace.join("\n\t")}"
         end
       end
+      puts "Got disconnected!"
       
     rescue Exception => e # leave the room if we crash
       unless e.kind_of?(SystemExit)
