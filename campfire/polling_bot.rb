@@ -1,6 +1,7 @@
 # PollingBot - a bot that polls the room for messages
 require 'campfire/bot'
 require 'campfire/message'
+require 'eventmachine'
 
 class Campfire
   class PollingBot < Bot
@@ -26,8 +27,15 @@ class Campfire
           sleep HEARTBEAT_INTERVAL
         end
       end
-      
+
+      have_timer = false
       room.listen do |message|
+        unless have_timer
+          EventMachine::add_periodic_timer(10) do
+            puts "[#{Time.now}] HEARTBEAT: Event loop"
+          end
+          have_timer = true
+        end
         begin
           klass = Campfire.const_get(message[:type])
           message = klass.new(message)
@@ -47,11 +55,11 @@ class Campfire
     end
 
     def process(message)
-      puts "processing #{message} (#{message.person} - #{message.body})" if debug
       if message.person == self.name
         puts "Skipping message from self"
         return
       end
+      puts "processing #{message} (#{message.person} - #{message.body})" if debug
       plugins.each do |plugin|
         if plugin.accepts?(message)
           puts "sending to plugin #{plugin} (priority #{plugin.priority})" if debug
