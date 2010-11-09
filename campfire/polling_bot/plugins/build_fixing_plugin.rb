@@ -33,6 +33,7 @@ class BuildFixingPlugin < Campfire::PollingBot::Plugin
       when /(.*)\s+is (not|done)/
         @fixers.delete($1)
       end
+      return HALT
     end
     if message.person == "buildbot" && message.body =~ /FIXED/
       @fixers.clear
