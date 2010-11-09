@@ -19,8 +19,8 @@ class BuildFixingPlugin < Campfire::PollingBot::Plugin
           bot.say("#{fixer} is fixing the build")
         end
       end
-    elsif message.body =~ /(.*)\s*fixing the build/
-      command = $1
+    elsif message.body =~ /([Ww]es[,:]? )?(.*)\s*fixing the build/
+      command = $2
       case command
       when /I'm\s*$/
         @fixers.add(message.person.downcase)
