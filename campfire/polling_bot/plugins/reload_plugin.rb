@@ -7,7 +7,7 @@ class ReloadPlugin < Campfire::PollingBot::Plugin
     when /^reload/i
       bot.say("Updating and restarting...")
       system("git pull origin master")
-      exec $0
+      exec 'ruby', $0
       return HALT
     end
   end
