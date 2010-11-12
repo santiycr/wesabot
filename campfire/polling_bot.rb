@@ -7,7 +7,6 @@ class Campfire
   class PollingBot < Bot
     require 'campfire/polling_bot/plugin'
     attr_accessor :plugins
-    HEARTBEAT_INTERVAL = 3 # seconds
 
     def initialize(params = {})
       # load plugin queue, sorting by priority
@@ -19,14 +18,6 @@ class Campfire
     def run
       # if we're interrupted, leave the room
       trap('INT') { room.leave; exit }
-      
-      # set up a heartbeat thread for plugins that want them
-      Thread.new do
-        while true
-          plugins.each {|p| p.heartbeat if p.respond_to?(:heartbeat)}
-          sleep HEARTBEAT_INTERVAL
-        end
-      end
 
       have_timer = false
       room.listen do |message|
