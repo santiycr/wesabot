@@ -36,7 +36,7 @@ class BuildFixingPlugin < Campfire::PollingBot::Plugin
       end
       return HALT
     end
-    if message.person == "buildbot" && message.body =~ /FIXED/
+    if message.person == "Hudson" && message.body =~ /SUCCESS/
       @fixers.clear
     end
   end
