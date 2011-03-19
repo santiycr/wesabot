@@ -31,9 +31,6 @@ class Campfire
       have_timer = false
       room.listen do |message|
         unless have_timer
-          EventMachine::add_periodic_timer(60) do
-            puts "[#{Time.now}] HEARTBEAT: Event loop"
-          end
           have_timer = true
         end
         begin
