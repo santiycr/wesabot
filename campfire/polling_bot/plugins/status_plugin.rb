@@ -66,7 +66,7 @@ class StatusPlugin < Campfire::PollingBot::Plugin
   end
 
   def show_statuses
-    statuses = Status.all(:order => [:person])
+    statuses = Status.all(:order => [:person], :expiry_time.gte => Time.now)
     if statuses.any?
       bot.say("Here's what everyone said they were doing:")
       statuses.each { |status| bot.say("  #{status.person} - #{status.value}") }
@@ -87,10 +87,11 @@ class StatusPlugin < Campfire::PollingBot::Plugin
 
   def update_status(person, value)
     person.downcase!
+    tomorrow = Time.now + (60 * 60 * 24)
     if status = Status.first(:person => person)
-      status.update_attributes(:value => value)
+      status.update_attributes(:value => value, :expiry_time => tomorrow)
     else
-      Status.create(:person => person, :value => value)
+      Status.create(:person => person, :value => value, :expiry_time => tomorrow)
     end
     bot.say("Duly noted, #{person}.")
   end
