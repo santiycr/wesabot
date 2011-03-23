@@ -116,8 +116,8 @@ class GreetingPlugin < Campfire::PollingBot::Plugin
     end
     
     if @wants_greeting[person].nil?
-      GreetingSetting.create(:person => person, :wants_greeting => true)
-      @wants_greeting[person] = true
+      GreetingSetting.create(:person => person, :wants_greeting => false)
+      @wants_greeting[person] = false
     end
     
     return @wants_greeting[person]      
